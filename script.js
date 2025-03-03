@@ -35,13 +35,33 @@ class linkedlist {
             contador++;
         }
         if (actual === null){
-            console.log("posicion fuera de los limites")
+            console.log("posicion fuera de los limites");
         }
 
         nuevoNode.next = actual.next;
         actual.next = nuevoNode;
     }
-    
+    eliminarPosicion(posicio) {
+        if (this.head === null){
+            console.log("la lista esta vacia");
+        }
+        if (posicio === 0){
+            this.head = this.head.next;
+            return;
+        }
+
+        let actual = this.head;
+        let contador = 0;
+        while (actual !== null && contador < posicio - 1){
+            actual = actual.next;
+            contador++;
+        }
+        if (actual === null || actual.next === null){
+            console.log("posicion fuera de limite");
+        }
+        actual.next = actual.next.next;
+    }
+
     mostrarLista() {
         let actual = this.head;
         while (actual !== null){
