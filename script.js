@@ -20,7 +20,28 @@ class linkedlist {
             actual.next = nuevoNode;
         }
     }
+    insertarPosicio(value, posicio){
+        const nuevoNode = new node(value);
+        if (posicio === 0){
+            nuevoNode.next = this.head;
+            this.head = nuevoNode;
+            return;
+        }
 
+        let actual = this.head;
+        let contador = 0;
+        while (actual !== null && contador < posicio - 1){
+            actual = actual.next;
+            contador++;
+        }
+        if (actual === null){
+            console.log("posicion fuera de los limites")
+        }
+
+        nuevoNode.next = actual.next;
+        actual.next = nuevoNode;
+    }
+    
     mostrarLista() {
         let actual = this.head;
         while (actual !== null){
@@ -29,3 +50,13 @@ class linkedlist {
         }
     }
 }
+
+const lista = new linkedlist();
+lista.aggFinal(1);
+lista.aggFinal(2);
+lista.aggFinal(3);
+lista.aggFinal(4);
+lista.aggFinal(5);
+lista.aggFinal(100);
+
+console.log(lista.mostrarLista())
